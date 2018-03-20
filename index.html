@@ -1,0 +1,441 @@
+
+<!doctype html> 
+<html lang="en">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    <!-- font fam -->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Sarala|Ubuntu:500" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Practice page</title> 
+    
+    <link href="reset.css" type="text/css" rel="stylesheet">
+        
+    <!-- main styles -->
+
+    <style>
+      html {
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+      
+      @media (min-width: 992px) {
+        html {
+          font-size: 18px;
+        }
+      }
+    
+     a {
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      a:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+      
+      body {
+        position: relative;
+        background: rgb(62,62,80);
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        z-index: -1;
+      }
+      
+      .rect {
+        position: absolute;
+        width: 100%;
+        height: 25rem;
+        top: 2rem;
+        left: 0;
+        background: rgb(240,240,240);
+        clip-path: circle(2rem at 4rem 4rem);
+        transition: all 1s ease-in-out;
+      }
+      
+      .rect:hover {
+        clip-path: circle(80rem);
+      }
+      
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20
+      }
+      
+      span {
+        position: relative;
+        left: 50%;
+        font-size: 5rem;
+      }
+      
+      .rect span {
+        font-size: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 1s;
+      }
+      
+      .rect:hover span {
+        left: 50%;
+        opacity: 1;
+        font-size: 5rem;
+      }
+      
+      /* morph menu */
+      
+      .nav {
+        display: inline-block;
+        margin: 1.2rem 1.2rem 1rem;
+        pointer-events: none;
+        transition: .5s;
+      }
+      
+      .nav-item {
+        position: relative;
+        display: inline-block;
+        float: left;
+        clear: both;
+        color: transparent;
+        font-size: .8rem;
+        letter-spacing: -.25rem;
+        height: .4rem;
+        line-height: .4rem;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: scaleY(.2);
+        transition: .5s, opacity 1s;
+      }
+      
+          /* footer */
+      
+      footer {
+        position: relative;
+        width: 100%;
+        padding: 2rem 1rem;
+        background: rgb(240,240,240);
+      }
+      
+      footer .logo {
+        color: rgba(0,0,0,.8);
+        text-align: center;
+      }
+      
+      .privacy {
+        font-size: .75rem;
+        text-align: center;
+        font-family: sarala;
+        color: rgba(0,0,0,.5);
+      }
+      
+      .footer-text {
+        font-size: .75rem;
+        font-family: sarala;
+        color: rgba(0,0,0,.5);
+        line-height: 1rem;
+      }
+      
+      .fa-twitter,
+      .fa-facebook-square,
+      .fa-instagram,
+      .fa-linkedin {
+        font-size: 1.5rem;
+        padding-right: .5rem;
+        color: rgb(242,210,100);
+      }
+      
+      .ok {
+        color: rgba(0,0,0,.8);
+        font-family: ubuntu;
+        font-size: 2.5rem;
+      }
+      
+      .question {
+        width: 100%;
+        height: calc(100% + 2rem);
+        background: rgb(242,210,100);
+        position: absolute;
+        top: -2rem;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        clip-path: circle(1.35rem at calc(90% + 1.65rem) 5.65rem);
+        transition: all 1s ease-in-out;
+      }
+      
+      .question::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-top: 2rem solid rgb(62,62,80);
+        border-right: 100vw solid transparent;
+      }
+      
+      .pulse:hover + .question {
+        clip-path: circle(80rem);
+      }
+      
+      .pulse {
+        background: transparent;
+        width: 2.7rem;
+        height: 2.7rem;
+        animation: none;
+        border-radius: 50%;
+        position: absolute;
+        top: 13rem;
+        cursor: pointer;
+        left: 65%;
+        text-align: center;
+        color: rgb(240,240,240);
+        font-family: sarala;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-top: .3rem;
+        animation-name: boxShadow;
+        animation-duration: 2s;
+        animation-direction: normal;
+        animation-iteration-count: infinite;
+        transition: all .5s ease;
+        z-index: 10;
+      }
+      
+      .pulse:hover {
+        opacity: 0;
+        transition: all 1s ease-in-out;
+      }
+      
+      @media(min-width: 526px) {
+        .pulse {
+          top: 11rem;
+        }
+      }
+      
+      @media (min-width: 768px) {
+        .pulse {
+          top: 2.3rem;
+          left: calc(90% + .3rem);
+        }
+      }
+      
+      @keyframes pulse {
+        0% {}
+        50% {clip-path: circle(1.65rem at calc(90% + 1.65rem) 3.65rem);}
+      }
+      
+      @keyframes boxShadow {
+        0% {box-shadow: 0 0 0 0 rgba(242,210,100,0);}
+        30% {box-shadow: 0 0 0 0 rgba(242,210,100,1);}
+        89% {box-shadow: 0 0 0 15px rgba(242,210,100,0);}
+      }
+      
+      .morphing .question {
+        display: none;
+      }
+      
+      .morphing.pulse {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 0;
+        width: calc(100vw - 17px);
+        height: 100%;
+        background: rgb(242,210,100);
+        animation: none;
+        padding: 2rem 1rem 1rem 1rem;
+      }
+      
+      @media (min-width: 768px) {
+        .morphing.pulse {
+          padding: 2rem 3rem;
+        }
+      }
+      @media (min-width: 992px) {
+        .morphing.pulse {
+          padding: 2rem 5rem;
+        }
+      }
+      
+      @media (min-width: 1200px) {
+        .morphing.pulse {
+          padding: 2rem 8rem;
+        }
+      }
+      
+      .morph-text {
+        font-family: ubuntu;
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+        transition: all .5s ease .5s;
+      }
+      
+      @media (min-width: 768px) {
+        .morph-text {
+          text-align: right;
+        }
+      }
+      
+      form {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+      
+      input {
+        width: 100%;
+        color: white;
+        font-family: sarala;
+        font-size: 1rem;
+        background: transparent;
+        border: .25rem solid white;
+        border-radius: .25rem;
+        transition: all .5s ease .5s;
+        padding: 0 1rem;
+      }
+      
+      input:focus {
+        outline: none;
+      }
+      
+      .morphing input {
+        display: block;
+        opacity: 1;
+      }
+      
+      .close-btn {
+        background: white;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        color: rgba(0,0,0,.8);
+        font-size: 2rem;
+        text-align: center;
+        font-family: ubuntu;
+        transition: all .5s ease .5s;
+        position: absolute;
+        left: calc(50% - 1.5rem);
+        margin-bottom: 0;
+      }
+      
+      @media (min-width: 768px) {
+        .close-btn {
+          position: static;
+          left: 0;
+        }
+      }
+      
+      .morphing .close-btn {
+        opacity: 1;
+        display: block;
+      }
+      
+      .morphing .pulse-row {
+        display: flex;
+      }
+      
+      .pulse-row {
+        margin-top: 3.65rem;
+      }
+      
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      
+    </style>
+  </head>
+  <body>
+  
+    <span>füge</span>
+    
+  <div class="rect">
+      <span>Alma</span>
+    </div>
+    
+    <input id="toggle" type="checkbox">
+    <label class="toggle-container" for="toggle">
+      <span class="button button-toggle"></span>
+    </label>
+    
+    <nav class="nav">
+      <a class="nav-item" href="#">Home</a>
+      <a class="nav-item" href="#">Blog</a>
+      <a class="nav-item" href="#">About</a>
+      <a class="nav-item" href="#">Contact</a>
+    </nav>
+
+
+        <footer>
+
+      <div class="row">
+        <div class="col-12 col-md-6 align-self-center">
+          <h1 class="logo mb-3">agriculture</h1>
+          <p class="privacy">Agricultural &copy; 2015- Privacy Policy</p>
+        </div>
+        <div class="col-12 col-md-6 p-0">
+          <div class="row">
+            <div class="col-6 col-md-3 p-0 mb-4 mt-4 mb-md-0 mt-md-0 pl-3 pl-md-0">
+              <p class="footer-text">Adress: Cambridge 1586 Cane Hill road 83.</p>
+              <p class="footer-text">Telephone: +1 8000 123 4567</p>
+              <p class="footer-text">Mobile: +1 8000 123 456</p>
+            </div>
+            <div class="col-6 col-md-3 p-0 align-self-center" style="text-align: center;">
+              <p class="footer-text mb-3">Signup for mail</p>
+              <p class="footer-icons"><i class="fab fa-twitter"></i><i class="fab fa-facebook-square"></i><i class="fab fa-instagram"></i><i class="fab fa-linkedin"></i></p>
+            </div>
+            <div class="col-6 col-md-3 p-0 pl-3 pl-md-0">
+              <h3 class="ok">ok</h3>
+            </div>
+          </div>
+        </div>
+          </div>
+                <div class="pulse">?</div>
+              <div class="question">
+                <div class="row justify-content-center pulse-row">
+                  <div class="col-12 col-md-5 col-lg-4 align-self-center">
+                    <p class="morph-text mb-4 mb-md-0">Your search: </p>
+                  </div>
+                  <div class="col-12 col-md-5 col-lg-4 mb-md-0 align-self-center mb-4">
+                    <form>
+                      <input type="text" name="search"/>
+                    </form>
+                  </div>
+                  <div class="col-2 mb-0">
+                    <div class="close-btn">X</div>
+                  </div>
+                </div>
+              </div>
+
+
+    </footer>
+  
+   <!-- Optional JavaScript --> 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
+  </body> 
+</html>
